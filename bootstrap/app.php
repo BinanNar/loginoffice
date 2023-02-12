@@ -108,6 +108,10 @@ $app->configure('app');
 
 $app->register(Irazasyed\Larasupport\Providers\ArtisanServiceProvider::class);
 
+
+$app->register(SpaanProductions\Office365\Office365ServiceProvider::class);
+
+
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
 ], function ($router) {

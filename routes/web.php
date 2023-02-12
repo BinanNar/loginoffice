@@ -15,6 +15,8 @@
 
 
 $router->get('signin', ['as' => 'AuthController.signin', 'uses' => 'AuthController@signin']);
+$router->get('checa', ['as' => 'AuthController.checa', 'uses' => 'AuthController@checa']);
+$router->get('redirect', ['as' => 'AuthController.redirect', 'uses' => 'AuthController@redirect']);
 
 $router->get('/', function () use ($router) {
     return $router->app->version();
