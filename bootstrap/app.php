@@ -107,9 +107,11 @@ $app->configure('app');
 */
 
 $app->register(Irazasyed\Larasupport\Providers\ArtisanServiceProvider::class);
-
-
 $app->register(SpaanProductions\Office365\Office365ServiceProvider::class);
+$app->middleware([
+    App\Http\Middleware\CorsMiddleware::class
+ ]);
+
 
 
 $app->router->group([

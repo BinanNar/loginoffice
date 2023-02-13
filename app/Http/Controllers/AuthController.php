@@ -11,13 +11,13 @@ class AuthController extends Controller
 
         
         $link = Office365::login();
-        //print_r($link);
-        return redirect($link);
+        return response()->json(
+            ["link"=> $link]);
     }
 
     public function redirect()
     {
-        //print_r("que honda bitches");
+      
         if (!request()->has('code')) {
             
             abort(500);
@@ -27,13 +27,19 @@ class AuthController extends Controller
         $code = Office365::getAccessToken(request()->get('code'));
 
         
-
+        
         $user = Office365::getUser($code['token']);
-        //print_r($user);
+        //print_r($user->getMail());
 
-        $messages = Office365::getEmails($code['token']);
-       
-        dd($user, $messages);
+        //$messages = Office365::getEmails($code['token']);
+       //print_r(!request());
+        //dd($user, $messages);
+
+        return redirect("http://localhost:8080/logged?nombre=elbinan");
+        /*
+        return response()->json(
+            ["code"=> $code,
+            "email"=>$user->getMail()]);*/
     }
 
     public function checa()
