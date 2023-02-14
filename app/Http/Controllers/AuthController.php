@@ -22,8 +22,6 @@ class AuthController extends Controller
             
             abort(500);
         }
-        
-
         $code = Office365::getAccessToken(request()->get('code'));
 
         
@@ -35,7 +33,7 @@ class AuthController extends Controller
        //print_r(!request());
         //dd($user, $messages);
 
-        return redirect("http://localhost:8080/logged?nombre=elbinan");
+        return redirect("http://localhost:8080/logged?nombre=".$user->getDisplayName());
         /*
         return response()->json(
             ["code"=> $code,
