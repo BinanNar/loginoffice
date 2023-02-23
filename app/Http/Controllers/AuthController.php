@@ -24,9 +24,12 @@ class AuthController extends Controller
         }
         $code = Office365::getAccessToken(request()->get('code'));
 
-        
+        //print_r($code);
         
         $user = Office365::getUser($code['token']);
+
+
+        
         //print_r($user->getMail());
 
         //$messages = Office365::getEmails($code['token']);
@@ -40,9 +43,16 @@ class AuthController extends Controller
             "email"=>$user->getMail()]);*/
     }
 
-    public function checa()
+    public function logout()
     {   
-        $estado = Office365::getState();
-        print_r($estado);
+
+        /*
+        dar de baja la secion wow
+        */
+        //print_r(!request());
+        //print_r("ya te saliste");
+        return redirect("http://localhost:8080");
+        //$estado = Office365::getState();
+        //print_r($estado);
     }
 }
